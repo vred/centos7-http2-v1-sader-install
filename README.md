@@ -1,6 +1,10 @@
 # CentOS 7 HTTP/2 partial-Stack Automated DeployER 
 ![Sader](https://farm8.staticflickr.com/7055/27031178825_7bd919d94b_o_d.gif "")
-Version 1 (SADER) 2016 May 15
+
+Version 1 (SADER) 
+
+2016 May 15
+
 A crude but serviceable shell script for a partial stack automated install featuring stable builds of OpenSSL/Python3/nginx for supporting HTTP/2 (w/ APLN) to be used with recently installed CentOS 7 (minimal). For sysadmins who are staging for Python 3-based web frameworks and want HTTP/2 (h2 for short) compliance in Cent OS 7 without needing to worry about any Chrome browser client compatibility. You will most certainly lose SPDY, though, if you used it before deploying this; I would have applied the CloudFlare patch, but unfortunately, they had not applied the SPDY compatibility patch to nginx 1.10.0 but a previous mainline build. 
 
 Why: The default CentOS 7 version of OpenSSL is way outdated. Simply using the default package manager to install these may not give you the versions that implement HTTP/2, either.  
