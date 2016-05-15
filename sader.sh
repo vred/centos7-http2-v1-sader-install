@@ -88,8 +88,8 @@ cd Python-3.5.1
 # We need to uncomment lines to get the proper OpenSSL directory accounted for:
 sed -i 's/#_socket socketmodule.c/_socket socketmodule.c/g' Modules/Setup.dist
 sed -i 's|#SSL=/usr/local/ssl|SSL=/usr/local/ssl|g' Modules/Setup.dist
-sed -i 's|#_ssl _ssl.c \|_ssl _ssl.c \|g' Modules/Setup.dist
-sed -i 's|#	-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \|	-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \|g' Modules/Setup.dist
+sed -i 's|#_ssl _ssl.c \\|_ssl _ssl.c \\|g' Modules/Setup.dist
+sed -i 's|#	-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \\|	-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \\|g' Modules/Setup.dist
 sed -i 's|#	-L$(SSL)/lib -lssl -lcrypto|	-L$(SSL)/lib -lssl -lcrypto|g' Modules/Setup.dist
 ./configure
 make
