@@ -64,10 +64,11 @@ if [[ $EUID -ne 0 ]]; then
 	echo “Must be root to run this!”
 exit 1
 fi 
+
+yum -y install wget perl gcc pcre pcre-devel zlib-devel
 ##########################
 # OpenSSL Version 1.0.2h #
 ##########################
-yum -y install wget perl gcc pcre pcre-devel 
 cd /usr/local/src/
 wget -O /usr/local/src/openssl-1.0.2h.tar.gz https://www.openssl.org/source/openssl-1.0.2h.tar.gz
 tar -xzf openssl-1.0.2h.tar.gz
