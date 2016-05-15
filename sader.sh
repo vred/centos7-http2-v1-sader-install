@@ -81,12 +81,15 @@ ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
 ##########################
 # Python Version 3.5.1   #
 ##########################
-# We need some libraries for openSSL, don’t freak out:
-yum -y install openssl-devel
+# let's get our right OpenSSL paths...
+export LDFLAGS="-L/usr/local/lib/"
+export LD_LIBRARY_PATH="/usr/local/lib/"
+export CPPFLAGS="-I/usr/local/include -I/usr/local/include/openssl"
+# yum -y install openssl-devel
 wget -O /usr/local/src/Python-3.5.1.tgz https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
 cd /usr/local/src
 tar -xzf /usr/local/src/Python-3.5.1.tgz
-cd python-3.5.1 
+cd Python-3.5.1 
 ./configure
 make
 make install 
