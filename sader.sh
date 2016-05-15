@@ -67,7 +67,7 @@ fi
 ##########################
 # OpenSSL Version 1.0.2h #
 ##########################
-yum -y install wget perl gcc 
+yum -y install wget perl gcc pcre 
 cd /usr/local/src/
 wget -O /usr/local/src/openssl-1.0.2h.tar.gz https://www.openssl.org/source/openssl-1.0.2h.tar.gz
 tar -xzf openssl-1.0.2h.tar.gz
@@ -82,9 +82,9 @@ ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
 # Python Version 3.5.1   #
 ##########################
 # let's get our right OpenSSL paths...
-export LDFLAGS="-L/usr/local/lib/"
-export LD_LIBRARY_PATH="/usr/local/lib/"
-export CPPFLAGS="-I/usr/local/include -I/usr/local/include/openssl"
+export LDFLAGS="-L/usr/local/ssl/"
+export LD_LIBRARY_PATH="/usr/local/ssl/lib"
+export CPPFLAGS="-I/usr/local/ssl/include -I/usr/local/ssl/include/openssl"
 # yum -y install openssl-devel
 wget -O /usr/local/src/Python-3.5.1.tgz https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
 cd /usr/local/src
