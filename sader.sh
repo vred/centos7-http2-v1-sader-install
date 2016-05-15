@@ -67,7 +67,7 @@ fi
 ##########################
 # OpenSSL Version 1.0.2h #
 ##########################
-yum -y install wget perl gcc pcre 
+yum -y install wget perl gcc pcre pcre-devel 
 cd /usr/local/src/
 wget -O /usr/local/src/openssl-1.0.2h.tar.gz https://www.openssl.org/source/openssl-1.0.2h.tar.gz
 tar -xzf openssl-1.0.2h.tar.gz
@@ -81,15 +81,16 @@ ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl
 ##########################
 # Python Version 3.5.1   #
 ##########################
-# let's get our right OpenSSL paths...
-export LDFLAGS="-L/usr/local/ssl/"
-export LD_LIBRARY_PATH="/usr/local/ssl/lib"
-export CPPFLAGS="-I/usr/local/ssl/include -I/usr/local/ssl/include/openssl"
-# yum -y install openssl-devel
 wget -O /usr/local/src/Python-3.5.1.tgz https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
 cd /usr/local/src
 tar -xzf /usr/local/src/Python-3.5.1.tgz
 cd Python-3.5.1 
+# We need to uncomment lines to get the proper OpenSSL directory accounted for:
+sed -i 's/#_socket socketmodule.c/_socket socketmodule.c/g' Modules/Setup.dist
+sed -i 's|#SSL=/usr/local/ssl|SSL=/usr/local/ssl|g' Modules/Setup.dist
+sed -i 's|#_ssl _ssl.c \|_ssl _ssl.c \|g' Modules/Setup.dist
+sed -i 's|#	-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \|	-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \|g' Modules/Setup.dist
+sed -i 's|#	-L$(SSL)/lib -lssl -lcrypto|	-L$(SSL)/lib -lssl -lcrypto|g' Modules/Setup.dist
 ./configure
 make
 make install 
