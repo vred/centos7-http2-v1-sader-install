@@ -67,7 +67,7 @@ fi
 ##########################
 # OpenSSL Version 1.0.2h #
 ##########################
-yum install wget perl gcc 
+yum -y install wget perl gcc 
 cd /usr/local/src/
 wget -O /usr/local/src/openssl-1.0.2h.tar.gz https://www.openssl.org/source/openssl-1.0.2h.tar.gz
 tar -xzf openssl-1.0.2h.tar.gz
@@ -76,13 +76,13 @@ cd openssl-1.0.2h
 make
 make depend
 make install
-yum remove openssl # this removes the old, dumb version of OpenSSL; it’s a liability!
+yum -y remove openssl # this removes the old, dumb version of OpenSSL; it’s a liability!
 ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl 
 ##########################
 # Python Version 3.5.1   #
 ##########################
 # We need some libraries for openSSL, don’t freak out:
-yum install openssl-devel
+yum -y install openssl-devel
 wget -O /usr/local/src/Python-3.5.1.tgz https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz
 cd /usr/local/src
 tar -xzf /usr/local/src/Python-3.5.1.tgz
